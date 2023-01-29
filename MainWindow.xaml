@@ -1,0 +1,49 @@
+﻿<Window Name="Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.org/wpf" 
+        x:Class="SwabianChallenge.MainWindow"
+        Title="MainWindow" Icon="/images.png" Background="White">
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <StackPanel Margin="10">
+                <DockPanel Margin="10,10,10,10" >
+                    <StackPanel>
+                        <Button x:Name="BtnOpenFile" Click="BtnOpenFile_Click" FontFamily="Calibri" 
+                            Content="Load data file" Background="#00bfff" Foreground="White"/>
+                        <Button x:Name="ClearData" FontFamily="Calibri" Click="ClearData_Click"
+                            Content="Clear loaded data" Background="#00bfff" Foreground="White"/>
+                    </StackPanel>
+
+                    <Label Name="Label" HorizontalAlignment="Left" FontFamily="Calibri" FontSize="16"
+                       FontWeight="Bold" FontStyle="Normal" Foreground="#00bfff">Loaded data Points</Label>
+                </DockPanel>
+                <StackPanel Name="StackPanel" Margin="10,10,10,10" >
+                    <Label FontWeight="Bold" FontSize="18" Content="Please select the fitting model after loading your data" Foreground="#00bfff"/>
+                    <CheckBox x:Name="Linear" Checked="Linear_Checked"   FontSize="16" Content="Linear" Foreground="#00bfff"/>
+                    <CheckBox x:Name="Exponential" Checked="Exponential_Checked"   FontSize="16" Content="Exponential" Foreground="#00bfff"/>
+                    <CheckBox x:Name="PowerFunction" Checked="PowerFunction_Checked" FontSize="16" Content="Power Function" Foreground="#00bfff"/>
+                    <Grid Name="MyGrid" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label  Name="CoefficientsLabel"  FontFamily="Calibri" 
+                            FontSize="18" Foreground="#00bfff">CoefficientsLabel</Label>
+                        <Label Grid.Column="1" Name="FittedDataPoints" 
+                       FontFamily="Calibri" 
+                       FontSize="18" 
+                       Foreground="#00bfff" >FittedDataPoints</Label>
+                    </Grid>
+                    <oxy:PlotView Name="PlotView" Width="{Binding ActualWidth, ElementName=MyGrid}" 
+                              Height="{Binding ActualHeight, ElementName=MyGrid}"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
